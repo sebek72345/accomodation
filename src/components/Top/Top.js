@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   right: 50px;
   transition: 0.5s;

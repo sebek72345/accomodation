@@ -1,9 +1,14 @@
 import React from "react";
-import { render } from "react-dom";
+import { render, get } from "react-dom";
 import { Form, Field } from "react-final-form";
 import styled from "styled-components";
 import Button from "../Button/Button";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const onSubmit = async (values) => {
+  await sleep(300);
+  window.alert(JSON.stringify(values, 0, 2));
+};
 
 const StyledInput = styled.input`
   border-radius: 30px;
@@ -11,11 +16,11 @@ const StyledInput = styled.input`
   border: 1px solid rgba(152, 215, 164, 0.8);
   font-size: 26px;
   margin: 10px 0;
-  width: 120%;
+  width: 100%;
 `;
 const StyledTextarea = styled.textarea`
   resize: none;
-  width: 120%;
+  width: 100%;
   border-radius: 30px;
   padding: 10px 20px;
   border: 1px solid rgba(152, 215, 164, 0.8);
@@ -28,22 +33,20 @@ const required = (value) => {
   return req ? null : "Wpisz poparwy e-mail ";
 };
 
-export default function Formularz({ onStart }) {
+export default function Formularz({ send }) {
   return (
     <div>
       <Form
-        onSubmit={onStart}
-        render={({
-          handleSubmit,
-          form,
-          submitting,
-          pristine,
-          values,
-          reset,
-        }) => (
+        onSubmit={send}
+        render={({ handleSubmit, reset, submitting, pristine, values }) => (
           <form
             onSubmit={(event) => {
-              handleSubmit(event).then(reset);
+              const promise = handleSubmit(event);
+              promise &&
+                promise.then(() => {
+                  window.location.reload(false);
+                });
+              return promise;
             }}
           >
             <Field name="imie">
@@ -78,7 +81,9 @@ export default function Formularz({ onStart }) {
               {({ input, meta }) => (
                 <div>
                   <StyledInput {...input} type="e-mail" placeholder="E-mail" />
-                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                  {meta.error && meta.touched && (
+                    <span style={{ color: "red" }}>{meta.error}</span>
+                  )}
                 </div>
               )}
             </Field>

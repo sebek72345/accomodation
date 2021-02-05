@@ -1,14 +1,26 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
-import img1 from "../../images/images/1.jpg";
-import img2 from "../../images/images/2.jpg";
-import img3 from "../../images/images/3.jpg";
-const PREFIX_URL =
-  "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/";
+import img1 from "../../images/lite/1.jpg";
+import img2 from "../../images/lite/2.jpg";
+import img3 from "../../images/lite/3.jpg";
+import img4 from "../../images/lite/4.jpg";
+import img5 from "../../images/lite/5.jpg";
+import img6 from "../../images/lite/6.jpg";
+import img7 from "../../images/lite/7.jpg";
+import img8 from "../../images/lite/8.jpg";
+import img9 from "../../images/lite/9.jpg";
+import img10 from "../../images/lite/10.jpg";
+import img11 from "../../images/lite/11.jpg";
+import img12 from "../../images/lite/12.jpg";
+import img13 from "../../images/lite/13.jpg";
+import img14 from "../../images/lite/14.jpg";
+import img15 from "../../images/lite/15.jpg";
+import img16 from "../../images/lite/16.jpg";
 
 class App extends React.Component {
   constructor() {
     super();
+    this.allPhoto();
     this.state = {
       showIndex: false,
       showBullets: true,
@@ -26,51 +38,17 @@ class App extends React.Component {
       thumbnailPosition: "left",
       showVideo: {},
     };
-
-    this.images = [
-      {
-        original: img1,
-        thumbnail: img1,
-      },
-      {
-        original: img2,
-        thumbnail: img2,
-      },
-      {
-        original: img3,
-        thumbnail: img3,
-      },
-      {
-        thumbnail: `${PREFIX_URL}4v.jpg`,
-        original: `${PREFIX_URL}4v.jpg`,
-        embedUrl:
-          "https://www.youtube.com/embed/4pSzhZ76GdM?autoplay=1&showinfo=0",
-        description: "Render custom slides within the gallery",
-        renderItem: this._renderVideo.bind(this),
-      },
-      {
-        original: `${PREFIX_URL}image_set_default.jpg`,
-        thumbnail: `${PREFIX_URL}image_set_thumb.jpg`,
-        imageSet: [
-          {
-            srcSet: `${PREFIX_URL}image_set_cropped.jpg`,
-            media: "(max-width: 1280px)",
-          },
-          {
-            srcSet: `${PREFIX_URL}image_set_default.jpg`,
-            media: "(min-width: 1280px)",
-          },
-        ],
-      },
-      {
-        original: `${PREFIX_URL}1.jpg`,
-        thumbnail: `${PREFIX_URL}1t.jpg`,
-        originalClass: "featured-slide",
-        thumbnailClass: "featured-thumb",
-        description: "Custom class for slides & thumbnails",
-      },
-    ].concat(this._getStaticImages());
   }
+  images = [];
+  allPhoto = () => {
+    for (let i = 1; i < 17; i++) {
+      console.log(img16);
+      this.images.push({
+        original: img16,
+        thumbnail: `../../images/lite/${i}.jpg`,
+      });
+    }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (
@@ -97,7 +75,6 @@ class App extends React.Component {
   }
 
   _onSlide(index) {
-    this._resetVideo();
     console.debug("slid to index", index);
   }
 
@@ -125,84 +102,9 @@ class App extends React.Component {
     this.setState({ thumbnailPosition: event.target.value });
   }
 
-  _getStaticImages() {
-    let images = [];
-    for (let i = 2; i < 12; i++) {
-      images.push({
-        original: `${PREFIX_URL}${i}.jpg`,
-        thumbnail: `${PREFIX_URL}${i}t.jpg`,
-      });
-    }
-
-    return images;
-  }
-
-  _resetVideo() {
-    this.setState({ showVideo: {} });
-
-    if (this.state.showPlayButton) {
-      this.setState({ showGalleryPlayButton: true });
-    }
-
-    if (this.state.showFullscreenButton) {
-      this.setState({ showGalleryFullscreenButton: true });
-    }
-  }
-
-  _toggleShowVideo(url) {
-    this.state.showVideo[url] = !Boolean(this.state.showVideo[url]);
-    this.setState({
-      showVideo: this.state.showVideo,
-    });
-
-    if (this.state.showVideo[url]) {
-      if (this.state.showPlayButton) {
-        this.setState({ showGalleryPlayButton: false });
-      }
-
-      if (this.state.showFullscreenButton) {
-        this.setState({ showGalleryFullscreenButton: false });
-      }
-    }
-  }
-
-  _renderVideo(item) {
-    return (
-      <div>
-        {this.state.showVideo[item.embedUrl] ? (
-          <div className="video-wrapper">
-            <a
-              className="close-video"
-              onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
-            ></a>
-            <iframe
-              title="pictures"
-              width="560"
-              height="315"
-              src={item.embedUrl}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </div>
-        ) : (
-          <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
-            <div className="play-button"></div>
-            <img className="image-gallery-image" src={item.original} />
-            {item.description && (
-              <span
-                className="image-gallery-description"
-                style={{ right: "0", left: "initial" }}
-              >
-                {item.description}
-              </span>
-            )}
-          </a>
-        )}
-      </div>
-    );
-  }
-
   render() {
+    console.log(this.images);
+
     return (
       <ImageGallery
         ref={(i) => (this._imageGallery = i)}

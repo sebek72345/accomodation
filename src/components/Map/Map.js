@@ -1,7 +1,7 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import styled from "styled-components";
-
+import "./Map.css";
 const style = {
   height: "400px",
   position: "static",
@@ -13,6 +13,7 @@ class Maps extends React.Component {
         <Map
           mapType="hibrid"
           style={style}
+          className="map"
           mapTypeControl={true}
           google={this.props.google}
           zoom={12}

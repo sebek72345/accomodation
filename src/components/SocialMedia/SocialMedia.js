@@ -6,16 +6,23 @@ const Wrapper = styled.div`
   position: sticky;
   top: 20px;
   width: 100px;
-  right: 0;
-  background-color: rgb(97, 125, 124);
+  left: 0;
+  background-color: #607a26;
   height: auto;
   border-radius: 0 15px 15px 0;
-
+  z-index: 18;
   color: white;
+  font-size: 20px;
+  padding: 5px 2px 5px 0;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 const StyledParagraph = styled.h5`
   text-align: center;
   color: black;
+  z-index: 18;
+  padding-top: 12px;
 `;
 const StyledIcon = styled.div`
   display: flex;

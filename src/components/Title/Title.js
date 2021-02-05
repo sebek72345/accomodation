@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledParagraph = styled.p`
   font-size: 26px;
   font-family: Montserrat;
+  text-align: justify;
 `;
 const StyledTitle = styled.h6`
   font-size: 36px;

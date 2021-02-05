@@ -1,146 +1,131 @@
 import React from "react";
 import logo from "./../../images/logo.svg";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import hero from "./../../images/images/19.jpg";
+import { NavLink, Link } from "react-router-dom";
+import hero from "./../../images/lite/hero.jpg";
 import home from "./../../images/images/20.jpg";
 import { MdPhone } from "react-icons/md";
 import Button from "../Button/Button";
 import SocialMedia from "../SocialMedia/SocialMedia";
 import { withRouter } from "react-router";
 import routers from "../../routers";
+import "./Navigation.css";
+import { GiHamburgerMenu } from "react-icons/gi";
 
-const StyledNav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  font-size: 22px;
-  max-width: 100vw;
+const StyledWrapper = styled.div`
   height: ${({ lower }) => `${lower ? "60vh" : "90vh"}`};
-  padding-top: 20px;
-  background: url(${hero}) bottom center / cover no-repeat;
-  position: relative;
-  background: ${({ lower }) =>
-    `url(${lower ? home : hero}) bottom center / cover no-repeat`};
-`;
-const StyledLists = styled.ul`
-  display: flex;
-`;
-const StyledLi = styled.li`
-  display: flex;
-  height: calc(30px + 15px + 15px);
-  flex-direction: column;
-  text-decoration: none;
-  padding: 15px 15px;
-  margin-top: 22px;
-  border-top: 2px solid #c0a281;
-  border-bottom: 2px solid #c0a281;
-  color: white;
-  transition: 0.8s;
-  &::before {
-    content: "";
-  }
-  &:hover {
-    background-color: rgba(221, 221, 221, 0.4);
-    color: black;
-  }
-`;
-const StyledImg = styled.img`
-  width: 300px;
-  height: 100px;
-`;
-const Contact = styled.div`
-  color: white;
-  display: flex;
-  flex-direction: column;
-  &:first-child {
-    text-align: right;
-  }
-`;
-const Position = styled.div`
-  display: flex;
-  padding-right: 50px;
-  align-items: center;
-`;
-const NumberPhone = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-right: 50px;
-`;
-const Description = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%);
-  color: white;
-  padding-bottom: 30px;
+  background-color: #ddd;
+  width: 100%;
+  background-image: url(${({ lower }) => `${!lower ? hero : home}`});
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 100px;
+  box-shadow: 5px 5px 50px 15px #617a36;
 `;
 const SocialMediaWrapper = styled.div`
   position: fixed;
   top: 200px;
   left: 0px;
+  z-index: 20;
 `;
-
 function Navigation(props) {
   const path = props.location.pathname.slice(1);
   const lowerHero = (() => path !== "")();
-  console.log(lowerHero);
+  const toggleModal = props.toggleModal;
+  console.log();
 
   return (
-    <>
-      <StyledNav lower={lowerHero}>
-        <StyledImg src={logo} alt="logo" />
-        <StyledLists>
-          <StyledLi as={Link} to={routers.home}>
-            STRONA GŁÓWNA
-          </StyledLi>
-          <StyledLi as={Link} to={routers.aboutUs}>
-            O NAS
-          </StyledLi>
-          <StyledLi as={Link} to={routers.cottages}>
-            DOMKI
-          </StyledLi>
-          <StyledLi as={Link} to={routers.rooms}>
-            POKOJE
-          </StyledLi>
-          <StyledLi as={Link} to={routers.attractions}>
-            ATRAKCJE
-          </StyledLi>
-          <StyledLi as={Link} to={routers.contact}>
-            KONTAKT
-          </StyledLi>
-        </StyledLists>
-        <Contact>
-          <h3>REZERWACJA</h3>
-
-          <Position>
-            <MdPhone size={40} />
-            <NumberPhone>
-              <span>607 207 390</span>
-              <span>601 071 840 </span>
-            </NumberPhone>
-          </Position>
-        </Contact>
-
-        <Description>
-          {lowerHero ? (
-            <>
-              <Link to={routers.home}>Strona Główna</Link>
-              <span>->{path}</span>
-            </>
-          ) : (
-            <>
-              <h2>Noclegi u Sokołów</h2>
-              <h3>Pokoje oraz domki wakacyjne</h3>
-              <Button>Zarezerwuj !</Button>
-            </>
-          )}
-        </Description>
-
-        <SocialMediaWrapper>
-          <SocialMedia />
-        </SocialMediaWrapper>
-      </StyledNav>
-    </>
+    <StyledWrapper className="wrapper" lower={lowerHero}>
+      <Link to="/">
+        <img src={logo} className="logo" />
+      </Link>
+      <div style={{ position: "fixed", right: 0 }}>
+        <div
+          className="hamburger"
+          onClick={() => {
+            toggleModal();
+            console.log("click");
+          }}
+        >
+          <GiHamburgerMenu style={{ borderRadius: "15px" }} />
+        </div>
+      </div>
+      <nav className="navigation">
+        <ul className="navList">
+          <NavLink
+            exact
+            className="link"
+            activeClassName="activeLink"
+            to={routers.home}
+          >
+            Strona Główna
+          </NavLink>
+          <NavLink
+            className="link"
+            activeClassName="activeLink"
+            to={routers.cottages}
+          >
+            Domki
+          </NavLink>
+          <NavLink
+            className="link"
+            activeClassName="activeLink"
+            to={routers.rooms}
+          >
+            Pokoje
+          </NavLink>
+          <NavLink
+            className="link"
+            activeClassName="activeLink"
+            to={routers.attractions}
+          >
+            Atrakcje
+          </NavLink>
+          <NavLink
+            className="link"
+            activeClassName="activeLink"
+            to={routers.contact}
+          >
+            Kontakt
+          </NavLink>
+        </ul>
+        <div id="contact">
+          <h4>REZERWACJA</h4>
+          <div className="phone-number">
+            <MdPhone size={50} />
+            <div>
+              <h6>607 207 390</h6>
+              <h6>607 555 390</h6>
+            </div>
+          </div>
+        </div>
+      </nav>
+      {lowerHero ? (
+        <div className="position">
+          <Link
+            to={routers.home}
+            style={{ textDecoration: "none", textTransform: "capitalize" }}
+          >
+            Strona główna
+          </Link>
+          <span style={{ color: "white" }}>->{path}</span>
+        </div>
+      ) : (
+        <div className="description-nav">
+          <h4>Noclegi u Sokoła</h4>
+          <h4>Pokoje oraz domki wakacyjne </h4>
+          <h4>w samym sercu Bieszczad </h4>
+          <Button>
+            <Link to={routers.contact} style={{ textDecoration: "none" }}>
+              Zarezerwuj
+            </Link>
+          </Button>
+        </div>
+      )}
+      <SocialMediaWrapper>
+        <SocialMedia />
+      </SocialMediaWrapper>
+    </StyledWrapper>
   );
 }
 export default withRouter(Navigation);

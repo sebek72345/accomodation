@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../../images/logo.svg";
 import Top from "../Top/Top";
+import "./Footer.css";
 const InnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -12,6 +13,7 @@ const StyledWrapper = styled.div`
   background-color: #000;
   padding: 40px 0;
   color: white;
+  position: relative;
 `;
 const StyledImg = styled.img`
   width: 150px;
@@ -19,33 +21,45 @@ const StyledImg = styled.img`
 
 export default function Footer() {
   const toTop = () => {
-    document.documentElement.scrollTop = 0;
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    console.log("click");
   };
+
   return (
-    <StyledWrapper>
-      <InnerWrapper>
-        <address>
-          <span>Adress</span>
+    <div className="outerWrapper">
+      <div className="wrapper-footer">
+        <address className="adress">
+          Dane:
           <br />
-          Domki u Sokoła
+          <span>Domki u Sokoła</span>
           <br />
-          Bukowiec 61
+          <span>Bukowiec 61</span>
           <br />
-          38-610 Polańczyk
+          <span>38-610 Polańczyk</span>
+          <br />
         </address>
-        <StyledImg src={logo} />
-        <div>
+        <img src={logo} alt="" className="logo" />
+        <div
+          style={{
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <span>Kontakt:</span>
-          <br />
-          <p>607 207 390</p>
-          <p>601 071 840</p>
-          <p>barbarasokoł@adresjakis.pl</p>
+          <a href="tel:601 071 840">607 207 390</a>
+          <a href="tel:601 071 840">601 071 840</a>
+          <a href="mailto:basia.sokol73@gmail.com">basia.sokol73@gmail.com</a>
         </div>
-      </InnerWrapper>
+      </div>
       <span style={{ textAlign: "center", display: "block" }}>
-        Copyright © Domki u Sokoła 2020. All rights reserved
+        Copyright © Domki u Sokoła {new Date().getFullYear()}. All rights
+        reserved
       </span>
-      <Top onClick={toTop} />
-    </StyledWrapper>
+    </div>
   );
 }
