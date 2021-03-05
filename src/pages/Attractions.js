@@ -64,7 +64,7 @@ export default function Attractions() {
         desc="Poszukiwaczy śladów dawnej kultury Łemków i Bojków zaciekawią na pewno doliny
         dawnych wsi Łopienki, Radziejowej czy Tyskowej, gdzie zachowały się stare cerkwiska
         i cmentarze."
-        pics="https://lh3.googleusercontent.com/proxy/DiX7eV8qO39XXhLebWf_U1mriISqDfl1s4m5IG4YgZW6HkLL0xOQMLjbw4rVF9G5J8rgWDCdHeijnxR43UwGnYatxvsgcBg24Im-d92Fec04"
+        pics="https://upload.wikimedia.org/wikipedia/commons/f/fa/%C5%81opienka%2C_cerkiew_%C5%9Bw._Paraskewy_%28HB1%29.jpg"
       />
       <Attraction
         title="Góry - Tarnica"

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { AiOutlineInstagram, AiOutlineFacebook } from "react-icons/ai";
-import { Link } from "react-router-dom";
 const Wrapper = styled.div`
   position: sticky;
   top: 20px;

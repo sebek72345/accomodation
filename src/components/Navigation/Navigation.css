@@ -19,6 +19,7 @@
   font-size: 26px;
   color: white;
   margin-top: 30px;
+  text-shadow: 1px 2px 2px rgb(107, 104, 104);
 }
 
 .navigation {
@@ -62,6 +63,11 @@
 
   .phone-number {
     display: flex;
+  }
+  .phone-number a {
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
   }
 
   .navList {

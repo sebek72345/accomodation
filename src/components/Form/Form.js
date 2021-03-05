@@ -1,14 +1,7 @@
 import React from "react";
-import { render, get } from "react-dom";
 import { Form, Field } from "react-final-form";
 import styled from "styled-components";
 import Button from "../Button/Button";
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const onSubmit = async (values) => {
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
-};
 
 const StyledInput = styled.input`
   border-radius: 30px;

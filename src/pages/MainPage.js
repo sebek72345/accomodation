@@ -11,7 +11,6 @@ import landspace1 from "../images/lite/9.jpg";
 import landspace2 from "../images/lite/24.jpg";
 import room1 from "../images/lite/rooms/1.jpg";
 import room2 from "../images/lite/rooms/3.jpg";
-
 const Wrapper = styled.div`
   width: 80%;
   margin: 0 auto;

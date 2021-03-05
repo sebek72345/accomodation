@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { HashRouter, Route, Link, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
 import Reserve from "./components/Reserve/Reserve";
 import Footer from "./components/Footer/Footer";
-import SocialMedia from "./components/SocialMedia/SocialMedia";
 import Attractions from "./pages/Attractions";
 import Contact from "./pages/Contact";
 import Cottage from "./pages/Cottage";
@@ -11,11 +10,11 @@ import Rooms from "./pages/Rooms";
 import MainPage from "./pages/MainPage";
 import Modal from "./components/Modal/Modal";
 import routers from "./routers";
+
 function App() {
   const [openModal, handleOpenModal] = useState(false);
   const toggleModal = () => {
     handleOpenModal(!openModal);
-    console.log("click");
   };
   return (
     <HashRouter>

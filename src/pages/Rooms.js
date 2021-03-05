@@ -11,7 +11,15 @@ const Wrapper = styled.div`
   width: 80%;
   margin: 15px auto 0 auto;
 `;
-
+const StyledHeading = styled.h2`
+  color: #607a26;
+  margin-bottom: 12px;
+  margin-top: 12px;
+`;
+const StyledFont = styled.p`
+  font-size: 18px;
+  margin-bottom: 26px;
+`;
 function Cottage() {
   const photos = [
     { src: room1, width: 4, height: 3 },
@@ -23,10 +31,14 @@ function Cottage() {
   return (
     <Wrapper>
       <Title
-        title="OPIS"
-        description="W naszym obiekcie posiadamy pokoje 2, 3 i 4osobowe z łazienkami i dostępem do aneksu kuchennego. Zielony, ogrodzony teren z bezpiecznym parkingiem, huśtawka, zjeżdżalnia, miejsce na grilla, ognisko, leżaki oraz osobne wejście dla gości."
+        title="Opis pokoi"
+        description="Pokoje 2, 3 i 4 osobowe z łazienką, lodówką i czajnikiem oraz dostępem do aneksu kuchennego. "
       />
-
+      <StyledHeading>Na zewnątrz</StyledHeading>
+      <StyledFont>
+        Osobne wejście dla gości, bezpieczny parking, miejsce na grilla i
+        ognisko, plac zabaw, leżaki.
+      </StyledFont>
       <GalleryMasonary photos={photos} />
     </Wrapper>
   );

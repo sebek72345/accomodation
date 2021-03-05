@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import Form from "../components/Form/Form";
 import styled from "styled-components";
-import sketch from "../images/sketch.jpg";
 import Maps from "../components/Map/Map";
 import Icons from "../components/Icons/Icons";
 import axios from "axios";
@@ -36,10 +34,6 @@ const FormWrapper = styled.div`
     width: 100%;
     margin-left: 20px;
   }
-`;
-const SuccessEmail = styled.p`
-  font-size: 18px;
-  color: #22bb33;
 `;
 
 export default function Contact() {

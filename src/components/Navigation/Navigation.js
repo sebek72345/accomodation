@@ -13,13 +13,13 @@ import "./Navigation.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const StyledWrapper = styled.div`
-  height: ${({ lower }) => `${lower ? "60vh" : "90vh"}`};
+  height: ${({ lower }) => `${lower ? "60vh" : "100vh"}`};
   background-color: #ddd;
   width: 100%;
   background-image: url(${({ lower }) => `${!lower ? hero : home}`});
   background-position: center;
   background-size: cover;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
   box-shadow: 5px 5px 50px 15px #617a36;
 `;
 const SocialMediaWrapper = styled.div`
@@ -37,7 +37,7 @@ function Navigation(props) {
   return (
     <StyledWrapper className="wrapper" lower={lowerHero}>
       <Link to="/">
-        <img src={logo} className="logo" />
+        <img src={logo} className="logo" alt="logo" />
       </Link>
       <div style={{ position: "fixed", right: 0 }}>
         <div
@@ -94,8 +94,9 @@ function Navigation(props) {
           <div className="phone-number">
             <MdPhone size={50} />
             <div>
-              <h6>607 207 390</h6>
-              <h6>607 555 390</h6>
+              <a href="tel:+48607207390">607 207 390</a>
+
+              <a href="tel:+48601071840">601 071 840</a>
             </div>
           </div>
         </div>
@@ -108,13 +109,13 @@ function Navigation(props) {
           >
             Strona główna
           </Link>
-          <span style={{ color: "white" }}>->{path}</span>
+          <span style={{ color: "white" }}> -&gt; {path}</span>
         </div>
       ) : (
         <div className="description-nav">
           <h4>Noclegi u Sokoła</h4>
-          <h4>Pokoje oraz domki wakacyjne </h4>
-          <h4>w samym sercu Bieszczad </h4>
+          <h4>Domki letniskowe i pokoje</h4>
+          <h4>w Bieszczadch</h4>
           <Button>
             <Link to={routers.contact} style={{ textDecoration: "none" }}>
               Zarezerwuj

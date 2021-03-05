@@ -1,18 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import routers from "../../routers";
 import "./Modal.css";
-const Wrapper = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  background-color: black;
-  z-index: 20;
-  color: white;
-`;
+
 export default function Modal({ toggleModal }) {
   return (
     <div className="modalWrapper">

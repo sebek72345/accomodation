@@ -1,23 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import logo from "../../images/logo.svg";
 import Top from "../Top/Top";
 import "./Footer.css";
-const InnerWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-`;
-const StyledWrapper = styled.div`
-  background-color: #000;
-  padding: 40px 0;
-  color: white;
-  position: relative;
-`;
-const StyledImg = styled.img`
-  width: 150px;
-`;
 
 export default function Footer() {
   const toTop = () => {
@@ -26,7 +10,6 @@ export default function Footer() {
       left: 0,
       behavior: "smooth",
     });
-    console.log("click");
   };
 
   return (
@@ -60,6 +43,7 @@ export default function Footer() {
         Copyright © Domki u Sokoła {new Date().getFullYear()}. All rights
         reserved
       </span>
+      <Top onClick={toTop} />
     </div>
   );
 }

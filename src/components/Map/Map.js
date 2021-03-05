@@ -1,6 +1,5 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
-import styled from "styled-components";
 import "./Map.css";
 const style = {
   height: "400px",
@@ -18,10 +17,6 @@ class Maps extends React.Component {
           google={this.props.google}
           zoom={12}
           scaleControl={false}
-          /* styles={{
-            featureType: "all",
-            stylers: [{ visability: "on" }],
-          }} */
           initialCenter={{ lat: 49.328, lng: 22.475 }}
         >
           <Marker

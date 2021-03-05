@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { MdKeyboardArrowUp } from "react-icons/md";
 const StyledDiv = styled.div`
@@ -7,13 +7,14 @@ const StyledDiv = styled.div`
   border: 2px solid #c3a182;
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
+  display: ${(props) => (props.visible ? "flex" : "none")};
   flex-direction: column;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
-  right: 50px;
+  right: 10px;
   transition: 0.5s;
+  background-color: #8a7777;
   &:hover {
     background-color: #c3a182;
   }
@@ -29,8 +30,16 @@ const StyledIcon = styled(MdKeyboardArrowUp)`
   }
 `;
 export default function Top({ onClick }) {
+  const [visible, setVisible] = useState(false);
+  window.addEventListener("scroll", (e) => {
+    if (window.scrollY > window.innerHeight) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  });
   return (
-    <StyledDiv onClick={onClick}>
+    <StyledDiv onClick={onClick} visible={visible}>
       <StyledIcon />
       <StyledIcon />
       <StyledIcon />

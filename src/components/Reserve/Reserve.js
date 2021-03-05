@@ -6,7 +6,6 @@ const StyledWrapper = styled.div`
   justify-content: space-around;
   background-color: #607a26;
   padding: 30px 0;
-  margin-top: 40px;
   font-size: 26px;
   font-weight: 600;
   max-width: 100vw;
