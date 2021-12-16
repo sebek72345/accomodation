@@ -11,6 +11,7 @@ import landspace1 from "../images/lite/9.jpg";
 import landspace2 from "../images/lite/24.jpg";
 import room1 from "../images/lite/rooms/1.jpg";
 import room2 from "../images/lite/rooms/3.jpg";
+import env from "../env.json";
 const Wrapper = styled.div`
   width: 80%;
   margin: 0 auto;
@@ -30,7 +31,7 @@ export default function Main() {
   return (
     <Wrapper>
       <Title
-        title="O NAS"
+        title={env.TITLE}
         description="Od zawsze jesteśmy powiązani z Bieszczadami. Tu się urodziliśmy, tu pracujemy i tu doświadczamy ich uroku na co dzień. Naszą misja jest dawanie gościom skrawka bieszczadzkiej codzienności. Wierzymy, ze magia i urok Bieszczad z naszą małą
         pomocą pomaga Wam zapomnieć o troskach zabieganej codzienności. Przyjedźcie, rozpalcie ognisko i odpocznijcie."
       />
