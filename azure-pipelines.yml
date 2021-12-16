@@ -10,6 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $environment= Get-Content (Get-Item src/environment.json) -Raw -Encoding UTF8 | ConvertFrom-Json
+      $environment.TITLE= "$(TITLE)" 
+      $environment | ConvertTo-Json | Set-Content environment.json
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
